@@ -220,4 +220,20 @@ class GroupModel extends Model
             ->where('permission_id', $permissionId)
             ->delete();
     }
+    
+    //--------------------------------------------------------------------
+
+    /**
+     * Removes all permissions from a single group.
+     *
+     * @param $groupId
+     *
+     * @return mixed
+     */
+    public function removeAllPermissionsFromGroup(int $groupId)
+    {
+        return $this->db->table('auth_groups_permissions')
+            ->where('group_id', $groupId)
+            ->delete();
+    }
 }
